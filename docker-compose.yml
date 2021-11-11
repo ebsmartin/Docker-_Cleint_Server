@@ -1,0 +1,13 @@
+version: '3.8'
+services:
+  server:
+    build: ./server/
+    command: python3 ./app/server.py 5
+    ports:
+      - 5000:5000
+  client:
+    build: ./client/
+    command: python3 ./app/client.py
+    network_mode: host
+    depends_on:
+      - server
